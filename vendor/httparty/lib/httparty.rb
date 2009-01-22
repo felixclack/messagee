@@ -3,7 +3,7 @@ $:.unshift(File.dirname(__FILE__))
 require 'net/http'
 require 'net/https'
 require 'rubygems'
-gem 'json', '>= 1.1.3'
+#gem 'json', '>= 1.1.3'
 require 'vendor/json/lib/json.rb'
 
 require 'module_level_inheritable_attributes'
