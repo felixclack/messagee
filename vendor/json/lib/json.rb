@@ -219,7 +219,7 @@ require 'vendor/json/lib/json/common.rb'
 # javasript prototype library (http://www.prototypejs.org) works.
 #
 module JSON
-  require 'json/version'
+  require 'vendor/json/lib/json/version.rb'
 
   if VARIANT_BINARY
     require 'json/ext'
