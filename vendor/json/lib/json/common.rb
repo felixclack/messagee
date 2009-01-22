@@ -1,4 +1,4 @@
-require 'json/version'
+require 'vendor/json/lib/json/version.rb'
 
 module JSON
   class << self
