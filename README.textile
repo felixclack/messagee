@@ -1,0 +1,5 @@
+h1. Messagee
+
+h3. An attempt to provide the missing feature of bulk messaging people in a churchworks system.
+
+p. The SMS facility currently uses the bulksms.co.uk api, as a result its a bit UK-centric. Should be straightforward to add other SMS providers if you want to.
