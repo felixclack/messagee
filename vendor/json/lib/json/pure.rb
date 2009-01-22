@@ -1,6 +1,6 @@
-require 'json/common'
-require 'json/pure/parser'
-require 'json/pure/generator'
+require 'vendor/json/lib/json/common.rb'
+require 'vendor/json/lib/json/pure/parser.rb'
+require 'vendor/json/lib/json/pure/generator.rb'
 
 module JSON
   begin
