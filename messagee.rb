@@ -1,10 +1,9 @@
 require 'rubygems'
-require 'sinatra'
-require 'diddies'
-require 'httparty'
-#require 'hpricot'
-require 'fastercsv'
-require 'smtp-tls'
+require 'vendor/sinatra/lib/sinatra.rb'
+require 'vendor/diddies/lib/diddies.rb'
+require 'vendor/httparty/lib/httparty.rb'
+require 'vendor/fastercsv/lib/fastercsv.rb'
+require 'vendor/smtp-tls/lib/smtp-tls.rb'
 
 class MessageeCsv
   

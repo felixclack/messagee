@@ -4,7 +4,7 @@ default_run_options[:pty] = true
 ssh_options[:keys] = "~/.ssh/brightbox-key"
 
 # be sure to change these
-set :user, 'felixclack.co.uk'
+set :user, 'felixclack'
 set :domain, 'messagee.co.uk'
 set :application, 'messagee'
 
