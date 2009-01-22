@@ -1,0 +1,29 @@
+!!! XML
+!!!
+%html
+  %head
+    %title Messagee - Send a bulk message
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+    %link{:type=>"text/css", :rel=>"stylesheet", :href=>"/master.css", :media=>"screen"}
+    
+  %body
+    #container
+      #header
+        %h1 Messagee
+        %h3 Your churchworks messaging buddy.
+        
+      #body
+        %h2 Message sent
+        %p= @go_postal.message if @go_postal
+        %p= @sms_result if @sms_result
+        %h4 SMS sent to...
+        %p= @go_postal.sms_recipients if @go_postal
+        %p= @email_result if @email_result
+        %h4 Email sent to...
+        %p= @email_recipients if @email_recipients
+        
+        %h3
+          Would you like to 
+          = link_to "send another message", "/"
+      
+      #footer

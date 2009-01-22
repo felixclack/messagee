@@ -1,0 +1,114 @@
+!!! XML
+!!!
+%html
+  %head
+    %title Messagee - Send a bulk message
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/public/application.js"></script>
+    %link{:type=>"text/css", :rel=>"stylesheet", :href=>"/master.css", :media=>"screen"}
+    
+  %body
+    #container
+      #header
+        %h1 Messagee
+        %h3 Your churchworks messaging buddy.
+        
+      #body
+        %h2 Send a bulk message
+        %form{:action=>"/message", :method=>"post"}
+          %p
+            - if @messagee.people.empty?
+              %p Sorry, we couldn't find any contacts in the file you uploaded.
+              %p
+                Try 
+                = link_to "uploading it again...", "/"
+            - else
+              %p
+                %label{:for=>"message"} Message:
+                %textarea{:name=>"message", :rows=>"3", :cols=>"60", :id=>"message"}
+                %span.char-counter 140
+              
+              %h4 Bulk SMS login details
+              %p
+                %label{:for=>"username"} Username:
+                %input{:type=>"text", :name=>"username", :id => "username"}
+            
+              %p
+                %label{:for=>"password"} Password:
+                %input{:type=>"password", :name=>"password", :id => "password"}
+                <a href="javascript:void(0)" class="account_link">Check account status</a>
+              #bulksms
+                  
+              %h4 Recipients
+              - @messagee.people.each do |person|
+                %p
+                  %label{:for=>"recipients"}= person[0]
+                  - if !person[1].empty?
+                    %input{:type=>"checkbox", :name=>"sms_recipients", :value=>person[1]}
+                    = person[1]
+                  - if !person[2].empty?
+                    %input{:type=>"checkbox", :name=>"email_recipients", :value=>person[2]}
+                    = person[2]
+            
+              %input{:type=>"submit", :value => "Send message"}
+      
+      #footer
+  :javascript
+    $.fn.isCharCounter = function() {
+      return this.each(function() {
+        var message_box=$(this)
+        var parent_form=message_box.parents("form");
+        var count_message=parent_form.find(".char-counter");
+        var submit_button=parent_form.find("input[type=submit]");
+        var select_option=parent_form.find("select");
+        function disable_button() {
+          submit_button.attr("disabled","disabled").addClass("disabled");
+        }
+        function enable_button() {
+          submit_button.removeAttr("disabled").removeClass("disabled");
+        }
+        function doCount() {
+          var message_content=message_box.val();
+          var message_length=message_content.length;
+          count_message.html(""+(140-message_length));
+          if(message_length<=0) {
+            count_message.css("color","#cccccc");
+            disable_button();
+          } else {
+            if(select_option.length==0||select_option.val()) {
+              enable_button();
+            } else {
+              disable_button();
+            }
+            if(message_length>130) { 
+              count_message.css("color","#d40d12");
+            } else {
+              if(message_length>120) {
+                count_message.css("color","#5c0002");
+              } else {
+                count_message.css("color","#cccccc");
+              }
+            }
+          }
+        }
+        message_box.bind("keyup blur focus change paste input", function(message_length) {
+          doCount();
+        })
+        message_box.focus();
+      })
+    };
+    $(document).ready(function() {
+      $("#message").isCharCounter();
+      $("a.account_link").click(function() {
+        var password = $("#password").val()
+        var username = $("#username").val()
+        if((username.length > 0) && (password.length > 0)) {
+          $("#bulksms").load("/bulksms", { username: username, password: password }, function(responseText) {
+            $(this).val(responseText)
+          })
+        } else {
+          $("#bulksms").append("<span id='error_message'>You haven't filled in your details</span>")
+          $("#error_message").animate({opacity:1.0}, 2000).fadeOut()
+        }
+      })
+    })

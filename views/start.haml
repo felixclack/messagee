@@ -1,0 +1,21 @@
+!!! XML
+!!!
+%html
+  %head
+    %title Messagee
+    %link{:rel=>"stylesheet", :href=>"/master.css", :media=>"screen"}
+    
+  %body
+    #container
+      #header
+        %h1 Messagee
+        %h3 Your churchworks messaging buddy.
+        
+      #body
+        %form{:action=>"/upload", :enctype=>"multipart/form-data", :method=>"post"}
+          %p Hit me with your churchworks csv...
+          %p
+            %label{:for=>"file"} File
+            %input{:type=>"file", :name=>"file"}
+            
+          %input{:type=>"submit", :value => "Upload"}

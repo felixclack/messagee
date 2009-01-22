@@ -1,0 +1,26 @@
+!!! XML
+!!!
+%html
+  %head
+    %title Messagee
+    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/master.css", :media=>"screen"}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+    
+  %body
+    #container
+      #header
+        %h1 Messagee
+        %h3 Your churchworks messaging buddy.
+        
+      #body
+        %form{:action=>"/", :method=>"post"}
+          %h4 What's the magic word?
+          %p
+            %label{:for=>"password"} Password
+            %input{:type=>"password", :name=>"password", :id => "password"}
+            
+          %input{:type=>"submit", :value => "Open sesame"}
+      
+    :javascript
+      $("input#password").focus()
+        
