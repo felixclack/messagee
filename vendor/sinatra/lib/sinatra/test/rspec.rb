@@ -1,11 +1,10 @@
-require 'sinatra/test'
-require 'sinatra/test/unit'
-require 'spec'
+require File.dirname(__FILE__) + '/unit'
 require 'spec/interop/test'
 
-Sinatra::Default.set(
-  :environment => :test,
-  :run => false,
-  :raise_errors => true,
-  :logging => false
-)
+class Test::Unit::TestCase
+
+  def should
+    @response.should
+  end
+
+end

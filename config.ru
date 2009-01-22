@@ -1,8 +1,10 @@
 require 'rubygems'
 require 'vendor/sinatra/lib/sinatra.rb'
 
-Sinatra::Application.set :run => false
-Sinatra::Application.set :environment => :production
+Sinatra::Application.default_options.merge!(
+  :run => false,
+  :env => :production
+)
 
 require 'messagee.rb'
-run Sinatra::Application
+run Sinatra.application

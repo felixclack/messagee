@@ -1,9 +1,10 @@
+require File.dirname(__FILE__) + '/unit'
 require 'test/spec'
-require 'sinatra/test'
-require 'sinatra/test/unit'
 
-module Sinatra::Test
+class Test::Unit::TestCase
+
   def should
     @response.should
   end
+
 end
