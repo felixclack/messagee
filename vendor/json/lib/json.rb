@@ -227,7 +227,7 @@ module JSON
     begin
       require 'json/ext'
     rescue LoadError
-      require 'json/pure'
+      require 'vendor/json/lib/json/pure.rb'
     end
   end
 
