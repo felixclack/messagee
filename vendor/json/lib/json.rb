@@ -1,4 +1,4 @@
-require 'json/common'
+require 'vendor/json/lib/json/common.rb'
 # = json - JSON for Ruby
 #
 # == Description
