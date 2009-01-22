@@ -3,8 +3,8 @@
 
 require 'net/smtp'
 require 'rubygems'
-require 'mailfactory'
-require 'tlsmail'
+require 'vendor/mailfactory/lib/mailfactory.rb'
+require 'vendor/tlsmail/lib/tlsmail.rb'
 
 Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
 
