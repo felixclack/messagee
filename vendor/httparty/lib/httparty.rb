@@ -4,7 +4,7 @@ require 'net/http'
 require 'net/https'
 require 'rubygems'
 gem 'json', '>= 1.1.3'
-require 'json'
+require 'vendor/json/lib/json.rb'
 
 require 'module_level_inheritable_attributes'
 require 'core_extensions'
