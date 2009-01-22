@@ -7,4 +7,4 @@
 # 
 # This file is just another name for faster_csv.rb.
 
-require "faster_csv"
+require "vendor/fastercsv/lib/faster_csv.rb"
