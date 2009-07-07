@@ -58,11 +58,12 @@ end
 
 configure do
   Sinatra::Mailer.config = {
-    :host => 'smtp.gmail.com',
-    :port => '587',
-    :user => 'felixclack@gmail.com',
-    :pass => 'anniehall',
-    :auth => :plain
+    :host => 'smtp.messagee.co.uk',
+    :domain => 'messagee.co.uk',
+    :port => '25',
+    :user => 'username',
+    :pass => 'password',
+    :auth => :login
   }
   
   require 'ostruct'
